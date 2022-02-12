@@ -5,18 +5,32 @@ long dectobin(int);
 int bintodec(long);
 int main()
 {
-    long bin; int dec;
-    printf(" Ënter any decimal integer: ");
-    scanf("%d", &dec);
-    bin = dectobin(dec);
-    printf(" The Binary value is: %d\n\n", bin);
-    
-    printf(" Enter any binary: ");
-    scnaf("%d", &bin);
-    dec = bintodec(bin);
-    printf(" The Decimal value is: %d \n\n", dec);
+   long bin; int dec;
+   char ent;
 
-    return 0;
+   printf("Enter [B]inary to decimal or [D]ecimal to binary: ");
+   scanf("%c", &ent);
+
+   if(ent == 'D')
+   {
+       printf(" Enter any decimal integer: ");
+       scanf("%d", &dec);
+       bin = dectobin(dec);
+       printf(" The Binary value is: %d \n\n", bin);
+   }
+   else if(ent == 'B')
+   {
+       printf(" Enter any binary: ");
+       scanf("%d", &bin);
+       dec = bintodec(bin);
+       printf(" The Decimal value is: %d \n\n", dec);
+   }
+   else
+   {
+       printf("\tInvalid Input\n");
+   }
+
+   return 0;
 }
 
 long dectobin(int dec)
