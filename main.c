@@ -4,27 +4,36 @@
 
 long dectobin(int);
 int bintodec(long);
+int dectohex(int);
 int main()
 {
-   long bin; int dec;
-   char ent;
+   long bin; int dec, ent;
+       
+   printf("Decimal to Binary -> 1\n");
+   printf("Binary to Decimal -> 2\n");
+   printf("Decimal to Hexadcimal -> 3\n");
+   printf("\nEnter respective number for the operation : ");
+   scanf("%d", &ent);
 
-   printf("Enter [B]inary to decimal or [D]ecimal to binary: ");
-   scanf("%c", &ent);
-
-   if(ent == 'D')
+   if(ent == 1)
    {
-       printf(" Enter any decimal integer: ");
+       printf(" Enter decimal value: ");
        scanf("%d", &dec);
        bin = dectobin(dec);
        printf(" The Binary value is: %d \n\n", bin);
    }
-   else if(ent == 'B')
+   else if(ent == 2)
    {
-       printf(" Enter any binary: ");
+       printf(" Enter binary value: ");
        scanf("%d", &bin);
        dec = bintodec(bin);
        printf(" The Decimal value is: %d \n\n", dec);
+   }
+   else if(ent == 3)
+   {
+       printf(" Enter decimal value: ");
+       scanf("%d", &dec);
+       printf("%c", dectohex(dec));
    }
    else
    {
@@ -34,7 +43,8 @@ int main()
    return 0;
 }
 
-long dectobin(int dec)
+// conversion fuctions
+long dectobin(int dec) // Decimal to Binary
 {
     long bin=0, rem, f=1;
     while(dec != 0)
@@ -47,7 +57,7 @@ long dectobin(int dec)
     return bin;
 }
 
-int bintodec(long bin)
+int bintodec(long bin) // Binary to Decimal
 {
     int dec = 0, i = 0, rem;
     while(bin != 0)
@@ -58,4 +68,29 @@ int bintodec(long bin)
         ++i;
     }
     return dec;
+}
+
+int dectohex(int decnum) // Decimal to Binary
+{
+    int rem, i=0;
+    char hexnum[50];
+    while(decnum != 0)
+    {
+        rem = decnum % 16;
+        if(rem < 10)
+        {
+            rem = rem + 48;
+        }
+        else
+            rem = rem + 55;
+        hexnum[i] = rem;
+        i++;
+        decnum = decnum / 16;     
+    }
+    printf("\n Equivalent value in hexadecimal = ");
+    for(i=i-1; i>=0; i--)
+    {
+        printf("%c", hexnum[i]);
+    }
+    return hexnum;
 }
