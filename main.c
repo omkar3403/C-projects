@@ -12,8 +12,8 @@ int main()
    printf("Decimal to Binary -> 1\n");
    printf("Binary to Decimal -> 2\n");
    printf("Decimal to Hexadcimal -> 3\n");
-   printf("\nEnter respective number for the operation : ");
-   scanf("%d", &ent);
+   printf("Enter respective number for the operation : ");
+   scanf("%d", &ent); printf("\n");
 
    if(ent == 1)
    {
@@ -87,10 +87,11 @@ int dectohex(int decnum) // Decimal to Binary
         i++;
         decnum = decnum / 16;     
     }
-    printf("\n Equivalent value in hexadecimal = ");
+    printf(" Equivalent value in hexadecimal = ");
     for(i=i-1; i>=0; i--)
     {
         printf("%c", hexnum[i]);
     }
-    return hexnum;
+    printf("\n\n");
+    return 0;
 }
