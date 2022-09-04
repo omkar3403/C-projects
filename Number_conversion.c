@@ -5,7 +5,6 @@ int dectobin(int);
 int bintodec(long);
 int dectohex(int);
 int power(int ,int);
-void run();
 
 int main()
 {
