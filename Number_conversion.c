@@ -1,43 +1,33 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<math.h>
-int dectobin(int);
-int bintodec(long);
-int dectohex(int);
+int dectobin();
+int bintodec();
+int dectohex();
 int power(int ,int);
 
-int main()
-{
-   long int bin; int dec, ent;
+int main() {
+	int ent;
 
-   printf("(1)Decimal to Binary \n");
-   printf("(2)Binary to Decimal \n");
-   printf("(3)Decimal to Hexadcimal\n");
-   printf("Enter respective number for the operation : ");
-   scanf("%d", &ent); printf("\n");
+	printf("(0)To exit the program \n");
+    printf("(1)Decimal to Binary \n");
+    printf("(2)Binary to Decimal \n");
+    printf("(3)Decimal to Hexadcimal\n");
+    printf("Enter respective number for the operation : ");
+    scanf("%d", &ent); printf("\n");
 
-   if(ent == 1)
-   {
-       printf(" Enter decimal value: ");
-       scanf("%d", &dec);
-       bin = dectobin(dec);
-       printf(" The Binary value is: %ld \n\n", bin);
+   if(ent == 1) {
+		dectobin();
    }
-   else if(ent == 2)
-   {
-       printf(" Enter binary value: ");
-       scanf("%ld", &bin);
-       dec = bintodec(bin);
-       printf(" The Decimal value is: %d \n\n", dec);
+   else if(ent == 2) {
+		bintodec();
    }
-   else if(ent == 3)
-   {
-       printf(" Enter decimal value: ");
-       scanf("%d", &dec);
-       printf("%c", dectohex(dec));
+   else if(ent == 3) {
+		dectohex();
    }
-   else
-   {
+   else if(ent == 0) {
+   		exit(1);
+   }
+   else {
        printf("\tInvalid Input\n");
    }
 }
@@ -45,21 +35,26 @@ int main()
 // conversion fuctions
 
 // Decimal to Binary func
-int dectobin(int dec) {
-    long int bin=0, rem, f=1;
-
+int dectobin() {
+    long int dec,bin=0, rem, f=1;
+	printf(" Enter a Decimal value: ");
+	scanf("%ld", &dec);
     while(dec != 0) {
         rem = dec % 2;
         bin = bin + rem * f;
-        f = f * 10; 
+        f = f * 10;
         dec = dec / 2;
     }
+	printf(" The Binary value is: %ld \n\n", bin);
     return bin;
 }
 
 // Binary to Decimal
-int bintodec(long bin) {
+int bintodec() {
     int dec = 0, i = 0, rem;
+	long bin;
+	printf(" Enter a binary value: ");
+	scanf("%ld", &bin);
 
     while(bin != 0) {
         rem = bin % 10;
@@ -67,6 +62,7 @@ int bintodec(long bin) {
         dec += rem * power(2,i);
         ++i;
     }
+	printf(" The Decimal value is: %d \n\n", dec);
     return dec;
 }
 
@@ -81,9 +77,11 @@ int power(int base, int expo) {
 }
 
 // Decimal to Hexadecimal
-int dectohex(int decnum) {
-    int rem, i=0;
+int dectohex() {
+    int rem, i=0, decnum;
     char hexnum[50];
+	printf(" Enter a Decimal value: ");
+	scanf("%d",&decnum);
     while(decnum != 0) {
         rem = decnum % 16;
         if(rem < 10) {
