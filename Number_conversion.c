@@ -1,17 +1,19 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-
-long dectobin(int);
+int dectobin(int);
 int bintodec(long);
 int dectohex(int);
+int power(int ,int);
+void run();
+
 int main()
 {
-   long bin; int dec, ent;
-       
-   printf("Decimal to Binary -> 1\n");
-   printf("Binary to Decimal -> 2\n");
-   printf("Decimal to Hexadcimal -> 3\n");
+   long int bin; int dec, ent;
+
+   printf("(1)Decimal to Binary \n");
+   printf("(2)Binary to Decimal \n");
+   printf("(3)Decimal to Hexadcimal\n");
    printf("Enter respective number for the operation : ");
    scanf("%d", &ent); printf("\n");
 
@@ -20,12 +22,12 @@ int main()
        printf(" Enter decimal value: ");
        scanf("%d", &dec);
        bin = dectobin(dec);
-       printf(" The Binary value is: %d \n\n", bin);
+       printf(" The Binary value is: %ld \n\n", bin);
    }
    else if(ent == 2)
    {
        printf(" Enter binary value: ");
-       scanf("%d", &bin);
+       scanf("%ld", &bin);
        dec = bintodec(bin);
        printf(" The Decimal value is: %d \n\n", dec);
    }
@@ -39,16 +41,15 @@ int main()
    {
        printf("\tInvalid Input\n");
    }
-
-   return 0;
 }
 
 // conversion fuctions
-long dectobin(int dec) // Decimal to Binary
-{
-    long bin=0, rem, f=1;
-    while(dec != 0)
-    {
+
+// Decimal to Binary func
+int dectobin(int dec) {
+    long int bin=0, rem, f=1;
+
+    while(dec != 0) {
         rem = dec % 2;
         bin = bin + rem * f;
         f = f * 10; 
@@ -57,39 +58,46 @@ long dectobin(int dec) // Decimal to Binary
     return bin;
 }
 
-int bintodec(long bin) // Binary to Decimal
-{
+// Binary to Decimal
+int bintodec(long bin) {
     int dec = 0, i = 0, rem;
-    while(bin != 0)
-    {
+
+    while(bin != 0) {
         rem = bin % 10;
         bin /= 10;
-        dec += rem * pow(2,i);
+        dec += rem * power(2,i);
         ++i;
     }
     return dec;
 }
 
-int dectohex(int decnum) // Decimal to Binary
-{
+// self made power func
+int power(int base, int expo) {
+	int result=1;
+	while(expo != 0) {
+		result = base * result;
+		--expo;
+	}
+	return result;
+}
+
+// Decimal to Hexadecimal
+int dectohex(int decnum) {
     int rem, i=0;
     char hexnum[50];
-    while(decnum != 0)
-    {
+    while(decnum != 0) {
         rem = decnum % 16;
-        if(rem < 10)
-        {
+        if(rem < 10) {
             rem = rem + 48;
         }
-        else
+		else
             rem = rem + 55;
         hexnum[i] = rem;
         i++;
-        decnum = decnum / 16;     
+        decnum = decnum / 16;
     }
     printf(" Equivalent value in hexadecimal = ");
-    for(i=i-1; i>=0; i--)
-    {
+    for(i=i-1; i>=0; i--) {
         printf("%c", hexnum[i]);
     }
     printf("\n\n");
