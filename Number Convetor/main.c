@@ -1,3 +1,4 @@
+// Number convertor
 #include<stdio.h>
 #include<stdlib.h>
 int dectobin();
