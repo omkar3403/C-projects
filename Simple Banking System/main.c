@@ -59,7 +59,7 @@ void login() {
 	printf("0. logout\n");
 	printf("1. menu\n");
 	printf("Enter option: ");
-	scanf("%d", &run);
+	scanf("%d", &runa);
 
 	if (runa == 0)
 	{
@@ -67,10 +67,10 @@ void login() {
 
 		run();
 	}
-	//else if (runa == 1)
-	//{
-		// menu();
-	//}
+	else if (runa == 1)
+	{
+		 menu();
+	}
 	else
 	{
 		printf("Invalid option");
@@ -79,6 +79,48 @@ void login() {
 }
 
 void menu() {
+	printf("0. Logout\n");
+	printf("1. Show Balance\n");
+	printf("2. Deposit Money\n");
+	printf("3. Withdraw Money\n");
+	// printf("4. Transfer Money\n");
+	int option;
+	printf("Enter option: ");
+	scanf("%d", &option);
 
+	if (option == 0)
+	{
+		run();
+	}
+	else if (option == 1)
+	{
+		showBalance();
+	}
+	else if (option == 2)
+	{
+		depositMoney();
+	}
+	else if (option == 3)
+	{
+		withdrawMoney();
+	}
+	else
+	{
+		printf("Invalid option");
+	}
+}
+
+void showBalance()
+{
+
+}
+
+void depositMoney()
+{
+
+}
+
+void withdrawMoney()
+{
 
 }
