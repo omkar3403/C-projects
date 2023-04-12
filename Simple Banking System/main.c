@@ -110,17 +110,29 @@ void menu() {
 	}
 }
 
+// Banlace 
+int Balance = 10000;
+
 void showBalance()
 {
-
+	printf("%d \n", Balance);
+	menu();
 }
 
 void depositMoney()
 {
-
+	int dep;
+	printf("Enter the amount: ");
+	scanf("%d", &dep);
+	Balance = Balance + dep;
+	showBalance();
 }
 
 void withdrawMoney()
 {
-
+	int withdraw;
+	printf("Enter the amount: ");
+	scanf("%d", &withdraw);
+	Balance = Balance - withdraw;
+	showBalance();
 }
